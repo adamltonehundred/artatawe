@@ -1,6 +1,7 @@
 package com.projects.artatawe.ui;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,11 +40,19 @@ public class LoginManager
    private Stage currentStage;
    private final Main mainApp;
    private User currentUser;
+   private Date dateLastLogin;
 
    public LoginManager(Stage stage, Main mainApp)
    {
       this.currentStage = stage;
       this.mainApp = mainApp;
+   }
+
+   public void setDateLastLogin(Date dateLastLogin) {
+      this.dateLastLogin = dateLastLogin;
+   }
+   public Date getDateLastLogin() {
+      return this.dateLastLogin;
    }
 
    public LoginController showLoginScreen()

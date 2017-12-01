@@ -1,5 +1,7 @@
 package com.projects.artatawe.ui.view;
 
+import java.util.Date;
+
 import com.projects.artatawe.ui.LoginManager;
 import com.projects.artatawe.user.User;
 
@@ -52,6 +54,8 @@ public class LoginController
    @FXML
    private void handleLogin()
    {
+      loginManager.setDateLastLogin(loginManager.getCurrentUser().getLastLogin());
+      loginManager.getCurrentUser().setLastLogin(new Date());
       loginManager.showMainScreen();
    }
 

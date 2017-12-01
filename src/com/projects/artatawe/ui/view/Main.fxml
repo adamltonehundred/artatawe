@@ -253,5 +253,7 @@
 			</tabs>
 		</TabPane>
 		<Button layoutX="807.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleLogout" text="Logout" />
+      <Label layoutX="14.0" layoutY="485.0" text="Last Login:" />
+      <Label fx:id="dateLastLoginLabel" layoutX="77.0" layoutY="485.0" />
 	</children>
 </AnchorPane>

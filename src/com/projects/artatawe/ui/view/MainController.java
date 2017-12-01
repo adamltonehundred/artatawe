@@ -1,5 +1,7 @@
 package com.projects.artatawe.ui.view;
 
+import java.util.Date;
+
 import com.projects.artatawe.artwork.Artwork;
 import com.projects.artatawe.artwork.Painting;
 import com.projects.artatawe.auction.AuctionListing;
@@ -112,7 +114,12 @@ public class MainController
    @FXML
    private TableColumn<AuctionListing, Double> doneAmountColumn;
 
+   @FXML
+   private Label dateLastLoginLabel;
+
    private AuctionListing selectedAuctionListing;
+
+
 
    /**
     * Initializes the controller class. This method is automatically called
@@ -208,6 +215,12 @@ public class MainController
             doneTable.setItems(auctioneer.getMyClosedAuctionListings(user));
          }
       }
+
+      Date dateLastLogin = loginManager.getDateLastLogin();
+      if(dateLastLogin == null)
+         dateLastLoginLabel.setText("You've not logged in before");
+      else
+         dateLastLoginLabel.setText(dateLastLogin.toString());
    }
 
    /*
