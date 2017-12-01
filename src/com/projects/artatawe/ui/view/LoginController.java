@@ -7,6 +7,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+/**
+ * The controller for the Login dialog.
+ *
+ * @author Adam Thomas
+ *
+ */
 public class LoginController
 {
    private LoginManager loginManager;
@@ -15,11 +21,16 @@ public class LoginController
    private ComboBox<User> userComboBox;
 
    @FXML
+   private Button loginButton;
+
+   @FXML
    private void initialize()
    {
 
       userComboBox.getSelectionModel().selectedItemProperty()
             .addListener((observable, oldValue, newValue) -> handleSelectUser());
+
+      loginButton.disableProperty().bind(userComboBox.valueProperty().isNull() );
    }
 
    public void setData(ObservableList<User> users)
