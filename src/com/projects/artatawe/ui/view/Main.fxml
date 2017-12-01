@@ -88,7 +88,7 @@
 										<Label fx:id="artDescriptionLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="31.0" prefHeight="190.0" prefWidth="403.0" style="-fx-background-color: DAE6F3;" text="Label" wrapText="true" />
 										<ButtonBar layoutX="175.0" layoutY="379.0" prefHeight="40.0" prefWidth="241.0">
 											<buttons>
-												<Button mnemonicParsing="false" onAction="#handleBidHistory" text="Bid History" />
+												<Button fx:id="bidHistoryButton" mnemonicParsing="false" onAction="#handleBidHistory" text="Bid History" />
 											</buttons>
 										</ButtonBar>
                               <ButtonBar layoutX="14.0" layoutY="379.0" prefHeight="40.0" prefWidth="225.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0">
@@ -171,8 +171,8 @@
 										<Label fx:id="artDescriptionLabel2" alignment="TOP_LEFT" layoutX="14.0" layoutY="31.0" prefHeight="190.0" prefWidth="403.0" style="-fx-background-color: DAE6F3;" text="Label" wrapText="true" />
 										<ButtonBar layoutX="14.0" layoutY="379.0" prefHeight="40.0" prefWidth="409.0">
 											<buttons>
-												<Button mnemonicParsing="false" onAction="#handleNewBid" text="Bid..." />
-												<Button mnemonicParsing="false" prefHeight="25.0" prefWidth="142.0" text="Favourite Seller" />
+												<Button fx:id="bidButton" mnemonicParsing="false" onAction="#handleNewBid" text="Bid..." />
+												<Button fx:id="favouriteSellerButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="142.0" text="Favourite Seller" />
 												<Button mnemonicParsing="false" text="Filter..." />
 											</buttons>
 										</ButtonBar>

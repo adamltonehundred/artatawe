@@ -9,6 +9,7 @@ import com.projects.artatawe.ui.LoginManager;
 import com.projects.artatawe.user.User;
 import com.projects.artatawe.user.UserManager;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
@@ -16,6 +17,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,6 +33,13 @@ public class MainController
    private LoginManager loginManager;
    private UserManager userManager;
    private Auctioneer auctioneer;
+
+   @FXML
+   private Button bidHistoryButton;
+   @FXML
+   private Button bidButton;
+   @FXML
+   private Button favouriteSellerButton;
 
    @FXML
    private TableView<AuctionListing> myArtworkTable;
@@ -162,6 +171,11 @@ public class MainController
             .addListener((observable, oldValue, newValue) -> showMyArtworkDetails(newValue));
       browseArtworkTable.getSelectionModel().selectedItemProperty()
             .addListener((observable, oldValue, newValue) -> showBrowseArtworkDetails(newValue));
+
+      // Bind buttons to tables
+      bidHistoryButton.disableProperty().bind(Bindings.isEmpty(myArtworkTable.getSelectionModel().getSelectedItems()));
+      bidButton.disableProperty().bind(Bindings.isEmpty(browseArtworkTable.getSelectionModel().getSelectedItems()));
+      favouriteSellerButton.disableProperty().bind(Bindings.isEmpty(browseArtworkTable.getSelectionModel().getSelectedItems()));
 
    }
 
