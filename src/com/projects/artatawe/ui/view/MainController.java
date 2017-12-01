@@ -308,6 +308,8 @@ public class MainController
       boolean okClicked = loginManager.showBidDialog(bid);
       if (okClicked) {
          auctioneer.bidFor(selectedAuctionListing, bid);
+         bidTable.setItems(loginManager.getCurrentUser().getBids());
+
          Alert alert = new Alert(AlertType.INFORMATION);
          alert.initOwner(loginManager.getCurrentStage());
          alert.setTitle("Artatawe : Bid Result");
@@ -329,6 +331,7 @@ public class MainController
       boolean okClicked = loginManager.showPaintingDialog(listing);
       if (okClicked) {
          auctioneer.post(listing);
+         myArtworkTable.setItems(auctioneer.getMyOpenAuctionListings(loginManager.getCurrentUser()));
       }
    }
 
