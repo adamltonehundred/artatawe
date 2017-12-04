@@ -61,11 +61,28 @@ public class Sculpture extends Artwork
       return height.get();
    }
 
+   /**
+    * @return the depth
+    */
+   public long getDepth()
+   {
+      return depth.get();
+   }
+
+   /**
+    * @return the main material
+    */
+   public String getMainMaterial()
+   {
+      return mainMaterial.toString();
+   }
+
    private void readObject(ObjectInputStream s) throws ClassNotFoundException, IOException {
       s.defaultReadObject();
 
       width = new SimpleLongProperty((long) s.readObject());
       height = new SimpleLongProperty((long) s.readObject());
+      depth = new SimpleLongProperty((long) s.readObject());
   }
 
   private void writeObject(ObjectOutputStream s) throws IOException {
@@ -73,6 +90,7 @@ public class Sculpture extends Artwork
 
       s.writeObject(getWidth());
       s.writeObject(getHeight());
+      s.writeObject(getDepth());
   }
 
 }

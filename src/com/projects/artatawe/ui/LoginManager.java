@@ -12,6 +12,7 @@ import com.projects.artatawe.ui.view.LoginController;
 import com.projects.artatawe.ui.view.MainController;
 import com.projects.artatawe.ui.view.PaintingController;
 import com.projects.artatawe.ui.view.RegisterUserController;
+import com.projects.artatawe.ui.view.SculptureController;
 import com.projects.artatawe.user.User;
 import com.projects.artatawe.user.UserManager;
 
@@ -26,11 +27,12 @@ import javafx.stage.Stage;
  * This class manages the screen flow from login to the main
  * artatawe dashboard. The following flow has been implemented:
  *
- * LoginScreen (add user)    -> RegisterUserScreen
- * LoginScreen (login)       -> MainScreen
- * MainScreen (bid)          -> BidDialog
- * MainScreen (add painting) -> PaintingDialog
- * MainScreen (logout)       -> LoginScreen
+ * LoginScreen (add user)     -> RegisterUserScreen
+ * LoginScreen (login)        -> MainScreen
+ * MainScreen (bid)           -> BidDialog
+ * MainScreen (add painting)  -> PaintingDialog
+ * MainScreen (add scuplture) -> SculptureDialog
+ * MainScreen (logout)        -> LoginScreen
  *
  * @author Adam Thomas
  *
@@ -205,6 +207,36 @@ public class LoginManager
 
          // Set the person into the controller.
          PaintingController controller = loader.getController();
+         controller.setDialogStage(dialogStage);
+         controller.init(listing, this);
+
+         // Show the dialog and wait until the user closes it
+         dialogStage.showAndWait();
+
+         return controller.isOkClicked();
+      } catch (IOException e) {
+         e.printStackTrace();
+         return false;
+      }
+   }
+
+   public boolean showSculptureDialog(AuctionListing listing)
+   {
+      try {
+      // Load the fxml file and create a new stage for the popup dialog.
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/SculptureDialog.fxml"));
+         AnchorPane page = (AnchorPane) loader.load();
+
+         // Create the dialog Stage.
+         Stage dialogStage = new Stage();
+         dialogStage.setTitle("Artatawe : Post Sculpture for Auction");
+         dialogStage.initModality(Modality.WINDOW_MODAL);
+         dialogStage.initOwner(currentStage);
+         Scene scene = new Scene(page);
+         dialogStage.setScene(scene);
+
+         // Set the person into the controller.
+         SculptureController controller = loader.getController();
          controller.setDialogStage(dialogStage);
          controller.init(listing, this);
 

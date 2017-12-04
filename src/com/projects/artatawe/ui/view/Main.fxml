@@ -47,7 +47,7 @@
 												<Font name="System Bold" size="12.0" />
 											</font>
 										</Label>
-										<GridPane layoutX="14.0" layoutY="222.0" prefWidth="398.0">
+										<GridPane layoutX="14.0" layoutY="222.0" prefHeight="160.0" prefWidth="398.0">
 											<columnConstraints>
 												<ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="121.0" />
 												<ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="277.0" />
@@ -57,6 +57,8 @@
 												<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 												<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 												<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 											</rowConstraints>
 											<children>
 												<Label text="Year created:">
@@ -83,6 +85,18 @@
 												<Label fx:id="createdByLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 												<Label fx:id="heightLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 												<Label fx:id="widthLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label text="Depth:" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Main Material:" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="depthLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label fx:id="mainMaterialLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 											</children>
 										</GridPane>
 										<Label fx:id="artDescriptionLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="31.0" prefHeight="190.0" prefWidth="403.0" style="-fx-background-color: DAE6F3;" text="Label" wrapText="true" />
@@ -93,7 +107,7 @@
 										</ButtonBar>
                               <ButtonBar layoutX="14.0" layoutY="379.0" prefHeight="40.0" prefWidth="225.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0">
                                 <buttons>
-                                  <Button mnemonicParsing="false" onAction="#handleNewSculptured" text="New Sculpture" ButtonBar.buttonData="LEFT" />
+                                  <Button mnemonicParsing="false" onAction="#handleNewSculpture" text="New Sculpture" ButtonBar.buttonData="LEFT" />
                         		  <Button mnemonicParsing="false" onAction="#handleNewPainting" text="New Painting" ButtonBar.buttonData="LEFT" />
                                 </buttons>
                               </ButtonBar>
@@ -130,7 +144,7 @@
 												<Font name="System Bold" size="12.0" />
 											</font>
 										</Label>
-										<GridPane layoutX="14.0" layoutY="222.0" prefWidth="398.0">
+										<GridPane layoutX="14.0" layoutY="222.0" prefHeight="160.0" prefWidth="398.0">
 											<columnConstraints>
 												<ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="121.0" />
 												<ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="277.0" />
@@ -140,6 +154,8 @@
 												<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 												<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 												<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 											</rowConstraints>
 											<children>
 												<Label text="Year created:">
@@ -166,6 +182,18 @@
 												<Label fx:id="createdByLabel2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 												<Label fx:id="heightLabel2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 												<Label fx:id="widthLabel2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label text="Depth:" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Main Material:" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="depthLabel2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label fx:id="mainMaterialLabel2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 											</children>
 										</GridPane>
 										<Label fx:id="artDescriptionLabel2" alignment="TOP_LEFT" layoutX="14.0" layoutY="31.0" prefHeight="190.0" prefWidth="403.0" style="-fx-background-color: DAE6F3;" text="Label" wrapText="true" />

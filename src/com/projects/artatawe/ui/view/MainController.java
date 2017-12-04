@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.projects.artatawe.artwork.Artwork;
 import com.projects.artatawe.artwork.Painting;
+import com.projects.artatawe.artwork.Sculpture;
 import com.projects.artatawe.auction.AuctionListing;
 import com.projects.artatawe.auction.Auctioneer;
 import com.projects.artatawe.auction.Bid;
@@ -64,6 +65,10 @@ public class MainController
    private Label heightLabel;
    @FXML
    private Label widthLabel;
+   @FXML
+   private Label depthLabel;
+   @FXML
+   private Label mainMaterialLabel;
 
    @FXML
    private TableView<AuctionListing> browseArtworkTable;
@@ -82,6 +87,10 @@ public class MainController
    private Label heightLabel2;
    @FXML
    private Label widthLabel2;
+   @FXML
+   private Label depthLabel2;
+   @FXML
+   private Label mainMaterialLabel2;
 
    @FXML
    private TableView<Bid> bidTable;
@@ -249,6 +258,17 @@ public class MainController
 
             heightLabel.setText("" + painting.getHeight());
             widthLabel.setText("" + painting.getWidth());
+            depthLabel.setText("");
+            mainMaterialLabel.setText("");
+         }
+
+         if (artwork instanceof Sculpture) {
+            Sculpture sculpture = (Sculpture) artwork;
+
+            heightLabel.setText("" + sculpture.getHeight());
+            widthLabel.setText("" + sculpture.getWidth());
+            depthLabel.setText("" + sculpture.getDepth());
+            mainMaterialLabel.setText("" + sculpture.getMainMaterial());
          }
 
       } else {
@@ -258,7 +278,8 @@ public class MainController
          createdByLabel.setText("");
          heightLabel.setText("");
          widthLabel.setText("");
-
+         depthLabel.setText("");
+         mainMaterialLabel.setText("");
       }
    }
 
@@ -283,6 +304,17 @@ public class MainController
 
             heightLabel2.setText("" + painting.getHeight());
             widthLabel2.setText("" + painting.getWidth());
+            depthLabel2.setText("");
+            mainMaterialLabel2.setText("");
+         }
+
+         if (artwork instanceof Sculpture) {
+            Sculpture sculpture = (Sculpture) artwork;
+
+            heightLabel2.setText("" + sculpture.getHeight());
+            widthLabel2.setText("" + sculpture.getWidth());
+            depthLabel2.setText("" + sculpture.getDepth());
+            mainMaterialLabel2.setText("" + sculpture.getMainMaterial());
          }
 
       } else {
@@ -292,7 +324,8 @@ public class MainController
          createdByLabel2.setText("");
          heightLabel2.setText("");
          widthLabel2.setText("");
-
+         depthLabel2.setText("");
+         mainMaterialLabel2.setText("");
       }
    }
 
@@ -336,19 +369,18 @@ public class MainController
    }
 
    /*
-    * TODO: Allow a user to post a new sculpture for auction. If the user
+    * Allow a user to post a new sculpture for auction. If the user
     * clicks OK, then post the auction to the auctioneer.
     */
    @FXML
-   private void handleNewSculptured()
+   private void handleNewSculpture()
    {
-      Alert alert = new Alert(AlertType.INFORMATION);
-      alert.initOwner(loginManager.getCurrentStage());
-      alert.setTitle("Artatawe : New Sculpture");
-      alert.setHeaderText("TODO");
-      alert.setContentText("TODO - Post a new Painting instead!");
-
-      alert.showAndWait();
+      AuctionListing listing = new AuctionListing();
+      boolean okClicked = loginManager.showSculptureDialog(listing);
+      if (okClicked) {
+         auctioneer.post(listing);
+         myArtworkTable.setItems(auctioneer.getMyOpenAuctionListings(loginManager.getCurrentUser()));
+      }
    }
 
    /*
