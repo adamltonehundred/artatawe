@@ -11,9 +11,8 @@ import java.util.prefs.Preferences;
 import com.projects.artatawe.ui.Main;
 
 /**
- * Implements the data persistence subsystem. This class saves the
- * state of the artatawe application and stores the file location
- * as a user preference.
+ * Implements the data persistence subsystem. This class saves the state of the
+ * artatawe application and stores the file location as a user preference.
  *
  * @author Adam Thomas
  *
@@ -22,38 +21,17 @@ public class FileHandler
 {
 
    /**
-    * Returns the file preference, i.e. the file that was last opened. The
-    * preference is read from the OS specific registry. If no such preference
-    * can be found, null is returned.
+    * Returns the file, or null if the file doesn't exist.
     *
     * @return
     */
    private File getFilePath()
    {
-      Preferences prefs = Preferences.userNodeForPackage(Main.class);
-      String filePath = prefs.get("artataweStateFile", null);
-      if (filePath != null) {
-         return new File(filePath);
-      } else {
-         return null;
+      File f = new File("artatawe.ser");
+      if (f.exists() && !f.isDirectory()) {
+         return f;
       }
-   }
-
-   /**
-    * Sets the file path of the currently loaded file. The path is persisted in
-    * the OS specific registry.
-    *
-    * @param file
-    *           the file or null to remove the path
-    */
-   private void setFilePath(String path)
-   {
-      Preferences prefs = Preferences.userNodeForPackage(Main.class);
-      if (path != null) {
-         prefs.put("artataweStateFile", path);
-      } else {
-         prefs.remove("artataweStateFile");
-      }
+      return null;
    }
 
    /**
@@ -99,7 +77,7 @@ public class FileHandler
          out.writeObject(state);
          out.close();
 
-         setFilePath("artatawe.ser");
+         // setFilePath("artatawe.ser");
       } catch (IOException ex) {
          ex.printStackTrace();
       }
